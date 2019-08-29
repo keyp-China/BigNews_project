@@ -150,7 +150,6 @@
             return;
         }
         $.get(baseUrl + "/admin/article/delete", { id: id }, function (res) {
-            console.log(res);
             if (res.code === 204) {
                 location.reload();
             } else {
