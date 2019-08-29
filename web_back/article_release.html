@@ -17,6 +17,11 @@
     <script src="js/tinymce/js/tinymce_setup.js"></script>
 </head>
 
+<script src="./js/template-web.js"></script>
+<script>
+    var baseUrl = "http:localhost:8080";
+</script>
+
 <body>
     <div class="container-fluid">
         <div class="common_title">
@@ -27,24 +32,20 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">文章标题：</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="文章标题">
+                        <input name="title" type="text" class="form-control" id="inputEmail3" placeholder="文章标题">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">文章封面：</label>
                     <div class="col-sm-10">
-                        <input type="file" id="exampleInputFile">
+                        <input name="cover" type="file" id="exampleInputFile">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">文章类别：</label>
                     <div class="col-sm-4">
-                        <select class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <select name="categoryId" class="form-control">
+                            <!-- 文章类别列表 -->
                         </select>
                     </div>
                 </div>
@@ -53,7 +54,7 @@
                     <div class="col-sm-4">
 
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="YYYY-MM-DD" id="dateinput">
+                            <input name="date" type="text" class="form-control" placeholder="YYYY-MM-DD" id="dateinput">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button"
                                     onclick="jeDate('#dateinput',{trigger:false,format: 'YYYY-MM-DD'})"><i
@@ -65,9 +66,8 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">文章内容：</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" id="rich_content" name="content" placeholder="文章内容">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda fugiat illo nihil molestias ab. Laborum eius non atque, totam sapiente quae obcaecati assumenda ratione inventore pariatur maiores, qui libero delectus.
-                            </textarea>
+                        <textarea class="form-control" id="rich_content" placeholder="文章内容">
+                        </textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -79,7 +79,49 @@
             </form>
         </div>
     </div>
-
 </body>
+
+
+<!-- 加载文章类别模板 -->
+<script id="categoryAll" type="text/html">
+    {{each data val}}
+        <option value="{{val.id}}">{{val.name}}</option>
+    {{/each}}
+</script>
+<!-- 调用文章类别查询接口 -->
+<script>
+    $.get(baseUrl + "/admin/category/list", function (res) {
+        var str = template("categoryAll", res);
+        $("select").html(str);
+    }, "json")
+</script>
+
+<!-- 发布或者存为草稿 -->
+<script>
+    $(".col-sm-offset-2").on("click", "button", function (e) {
+        e.preventDefault();
+        var fd = new FormData($(".article_form")[0]);
+        fd.append("content", tinyMCE.activeEditor.getContent());
+        if ($(this).hasClass("btn-success")) {
+            fd.append("state", "已发布");
+        } else {
+            fd.append("state", "草稿");
+        }
+        $.ajax({
+            type: "post",
+            url: baseUrl + "/admin/article/publish",
+            data: fd,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function (res) {
+                alert(res.msg);
+                if (res.code == 200) {
+                    location.href = 'article_list.html';
+                }
+            }
+        })
+    })
+</script>
 
 </html>
