@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/iconfont.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/jquery-1.12.4.min.js"></script>
-
 </head>
 
 <body>
@@ -22,40 +21,38 @@
         <div class="container-fluid common_con">
             <form class="form-horizontal article_form">
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">用户名称：</label>
+                    <label for="username" class="col-sm-2 control-label">用户名称：</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputEmail3" value="李思思">
+                        <input name="username" type="text" class="form-control" id="username">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">昵称：</label>
+                    <label for="nickname" class="col-sm-2 control-label">昵称：</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputEmail3" value="思思">
+                        <input name="nickname" type="text" class="form-control" id="nickname">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">邮箱：</label>
+                    <label for="email" class="col-sm-2 control-label">邮箱：</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputEmail3" value="lisisi@126.com">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">用户图标：</label>
-                    <div class="col-sm-10">
-                        <img src="images/2.jpg" alt="" class="user_pic">
-                        <input type="file" id="exampleInputFile">
+                        <input name="email" type="text" class="form-control" id="email">
                     </div>
                 </div>
 
                 <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">密码：</label>
-                        <div class="col-sm-4">
-                            <input type="password" class="form-control" id="inputEmail3" value="12345678">
-                        </div>
+                    <label for="userPic" class="col-sm-2 control-label">用户图标：</label>
+                    <div class="col-sm-10">
+                        <img src="" alt="" class="user_pic">
+                        <input name="userPic" type="file" id="exampleInputFile" id="userPic">
                     </div>
-               
-    
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">密码：</label>
+                    <div class="col-sm-4">
+                        <input name="password" type="password" class="form-control" id="password">
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-success">修改</button>
@@ -64,7 +61,41 @@
             </form>
         </div>
     </div>
-
 </body>
+
+<script>
+    var baseUrl = "http:localhost:8080";
+</script>
+<script>
+    function init() {
+        $.get(baseUrl + "/admin/user/detail", function (res) {
+            $("#username").val(res.data.username);
+            $("#nickname").val(res.data.nickname);
+            $("#email").val(res.data.email);
+            $("#password").val(res.data.password);
+            $(".user_pic").attr("src", res.data.userPic);
+        }, "json")
+    }
+    init();
+
+    $(".btn-success").click(function (e) {
+        e.preventDefault();
+        var fd = new FormData($(".article_form")[0]);
+        $.ajax({
+            type: "POST",
+            url: baseUrl + "/admin/user/edit",
+            data: fd,
+            dataType: "json",
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                alert(res.msg);
+                if (res.code == 200) {
+                    window.location.href = "main_count.html";
+                }
+            }
+        });
+    })
+</script>
 
 </html>
