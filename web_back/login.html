@@ -23,14 +23,41 @@
             <form class="login_form">
                 <i class="iconfont icon-user"></i>
                 <i class="iconfont icon-key"></i>
-                <input type="text" class="input_txt" placeholder="邮箱/手机号">
-                <input type="password" class="input_pass" placeholder="密码">
+                <input name="username" type="text" class="input_txt" placeholder="用户名/邮箱/手机号">
+                <input name="password" type="password" class="input_pass" placeholder="密码">
                 <input type="submit" class="input_sub" value="登 录">
             </form>
         </div>
-
-    </div> 
-
+    </div>
 </body>
+
+<script src="./js/jquery-1.12.4.min.js"></script>
+<script>
+    var baseUrl = "http://localhost:8080"
+    $(".input_sub").click(function (e) {
+        e.preventDefault();
+        //调用登录接口
+        $.ajax({
+            type: "POST",
+            url: baseUrl + "/admin/user/login",
+            data: $(".login_form").serialize(), //username=admin&password=123456
+            dataType: "json",
+            success: function (res) {
+                alert(res.msg);
+                if (res.code == 200) {
+                    location.href = "./index.html";
+                } else {
+                    $(".input_txt").val("");
+                    $(".input_pass").val("");
+                }
+            },
+            error: function (res) {
+                alert(res.responseJSON.msg);
+                $(".input_txt").val("");
+                $(".input_pass").val("");
+            }
+        })
+    });
+</script>
 
 </html>
