@@ -159,7 +159,7 @@
         $(".breadcrumb").after(str);
         // 在这里，加载代码高亮的js文件 prism.js。
         //办法是 使用DOM的方案，创建script标签，然后将script标签放到body中
-        $('<script>').attr('src', 'prism/prism.js').appendTo('body');
+        $('<script>').attr('src', './prism/prism.js').appendTo('body');
     }, "json")
 </script>
 
@@ -191,7 +191,7 @@
         e.preventDefault();
         var name = $(".comment_name").val();
         var text = $(".comment_input").val();
-        var rex = /^[a-zA-Z]{1}[a-zA-Z0-9_-]{3,15}$/;
+        var rex = /^[0-9a-zA-Z\u4e00-\u9fa5_]{2,16}$/;
         if (!(rex.test(name))) {
             alert("用户名不合法！");
             return;
@@ -206,8 +206,6 @@
             },
             function (res) {
                 alert(res.msg);
-                //刷新评论
-                flushComment();
                 $(".comment_name").val("");
                 $(".comment_input").val("");
             }, "json")
