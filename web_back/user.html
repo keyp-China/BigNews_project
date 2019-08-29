@@ -89,9 +89,11 @@
             contentType: false,
             processData: false,
             success: function (res) {
-                alert(res.msg);
                 if (res.code == 200) {
-                    window.location.href = "main_count.html";
+                    alert(res.msg + " 请重新登录！");
+                    window.parent.location.href = "login.html";
+                } else {
+                    alert(res.msg);
                 }
             }
         });
