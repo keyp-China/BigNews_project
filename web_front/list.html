@@ -89,13 +89,11 @@
         <p>CopyRight © 2019 深圳大事件信息技术股份有限公司 All Rights Reserved</p>
         <p>电话：0755-****888 粤ICP备*******8号</p>
     </div>
-
 </body>
 
 <script src="./js/jquery-1.12.4.min.js"></script>
 <script src="./js/jquery.pagination.min.js"></script>
 <script src="./js/template-web.js"></script>
-
 <script>
     var baseUrl = "http://localhost:8080";
 </script>
@@ -142,9 +140,13 @@
                 var str = template("list_c", res);
                 $("#listContent").html(str);
                 if (params.type && params.type.length > 0) {
-                    $(".list_title h3").text(res.data.data[0].category);
+                    if (res.data.data.length > 0) {
+                        $(".list_title h3").text(res.data.data[0].category);
+                    } else {
+                        $(".list_title h3").text("未搜索到匹配的数据");
+                    }
                 } else {
-                    $(".list_title h3").text("搜索--" + params.key);
+                    $(".list_title h3").text('搜索"' + params.key + '"的结果');
                 }
                 page(res.page, res.pages);
             }, "json");
