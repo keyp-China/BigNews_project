@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: bignews
 Target Host: localhost
 Target Database: bignews
-Date: 2019/8/29 10:12:56
+Date: 2019/8/30 1:50:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -16,15 +16,15 @@ CREATE TABLE `articles` (
   `title` varchar(255) NOT NULL,
   `cover` varchar(255) NOT NULL,
   `date` varchar(255) NOT NULL,
-  `content` varchar(255) NOT NULL,
-  `isDelete` text NOT NULL,
+  `content` text NOT NULL,
+  `isDelete` int(11) NOT NULL,
   `state` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
   `read` int(11) DEFAULT NULL,
   `categoryId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `categoryId` (`categoryId`)
-) ENGINE=MyISAM AUTO_INCREMENT=224 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=227 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for categories
@@ -36,7 +36,7 @@ CREATE TABLE `categories` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for comments
@@ -51,7 +51,7 @@ CREATE TABLE `comments` (
   `articleId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `articleId` (`articleId`)
-) ENGINE=MyISAM AUTO_INCREMENT=8007 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8010 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for users
@@ -69,20 +69,20 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records 
 -- ----------------------------
-INSERT INTO `articles` VALUES ('1', '游资龙虎榜：前期强势股开启补跌模式，市场热点继续高低切', 'https://wpimg.wallstcn.com/d39d1a2a-668e-48a4-82de-4ff339a33a01.png', '2019-05-20', '一、次新股\n金力永磁\n\n恒铭达\n\n昨天在《游资龙虎榜丨市场继续缩量下探，热点板块明天存在补跌预期》提...', '0', '已发布', '管理员', '761', '1');
-INSERT INTO `articles` VALUES ('2', '微博Q1财报：二季度营收指引令人失望 盘中深跌近17%', 'https://wpimg.wallstcn.com/715cbb49-73bf-4aa1-b132-adab3ad16d50.jpg', '2019-05-20', '微博净营收增速进一步下滑，一季度同比增长14%，较上季度的28%腰斩；预计第二季度净营收4.27亿至4.37亿美元，远低于市场预估的4.818亿美元。微博收跌11.28%，报收2017年1月6日以来最低，新浪深跌15%，收创三年最低。', '0', '已发布', '管理员', '140', '2');
+INSERT INTO `articles` VALUES ('1', '游资龙虎榜：前期强势股开启补跌模式，市场热点继续高低切', 'https://wpimg.wallstcn.com/d39d1a2a-668e-48a4-82de-4ff339a33a01.png', '2019-05-20', '一、次新股\n金力永磁\n\n恒铭达\n\n昨天在《游资龙虎榜丨市场继续缩量下探，热点板块明天存在补跌预期》提...', '0', '已发布', '管理员', '762', '1');
+INSERT INTO `articles` VALUES ('2', '微博Q1财报：二季度营收指引令人失望 盘中深跌近17%', 'https://wpimg.wallstcn.com/715cbb49-73bf-4aa1-b132-adab3ad16d50.jpg', '2019-05-20', '微博净营收增速进一步下滑，一季度同比增长14%，较上季度的28%腰斩；预计第二季度净营收4.27亿至4.37亿美元，远低于市场预估的4.818亿美元。微博收跌11.28%，报收2017年1月6日以来最低，新浪深跌15%，收创三年最低。', '0', '已发布', '管理员', '141', '2');
 INSERT INTO `articles` VALUES ('3', '刘士余其人其事', 'https://wpimg.wallstcn.com/922e6af5-77dd-4de8-9b0a-45df77cdd237.jpg', '2019-05-20', '“5.19”行情的整整二十年后，前任证监会主席刘士余配合审查调查的消息传来。', '0', '草稿', '管理员', '515', '3');
 INSERT INTO `articles` VALUES ('4', '美联储三号人物：关税可能对美国通胀产生重大影响、抑制美国经济增长', 'https://wpimg.wallstcn.com/ea08ac97-2964-498b-9a30-fa4bd9bc39f9.jpg', '2019-05-20', '威廉姆斯还表示，全球经济复苏将缓慢且通胀率低于目标，目前美国经济处于非常好的位置，美国货币政策也正适宜。', '0', '已发布', '管理员', '655', '1');
-INSERT INTO `articles` VALUES ('5', '权威第三方机构称南阳并无加氢站', 'https://wpimg.wallstcn.com/1830a841-fd58-43e0-8dff-282ac4962830.jpg', '2019-05-20', '从权威第三方机构获悉,目前我国正在运营的加氢站25座,其中河南省仅有一座宇通加氢站,位于郑州,南阳并无在运营的加氢站。', '0', '草稿', '管理员', '771', '4');
+INSERT INTO `articles` VALUES ('5', '权威第三方机构称南阳并无加氢站', 'https://wpimg.wallstcn.com/1830a841-fd58-43e0-8dff-282ac4962830.jpg', '2019-05-20', '从权威第三方机构获悉,目前我国正在运营的加氢站25座,其中河南省仅有一座宇通加氢站,位于郑州,南阳并无在运营的加氢站。', '0', '草稿', '管理员', '772', '4');
 INSERT INTO `articles` VALUES ('6', '亚马逊股价两三年内升至3000美元？又有分析师这样喊了', 'https://wpimg.wallstcn.com/77a89d3e-b183-498f-a6e9-258fcba47f12.jpg', '2019-05-20', '截至24日收盘，亚马逊股价为1823.28美元，这意味着未来2至3年还有64.5%的上涨空间。', '0', '草稿', '管理员', '285', '4');
 INSERT INTO `articles` VALUES ('7', '感谢“非银之友”', 'https://wpimg.wallstcn.com/a0d0c263-4e84-4598-b3ec-a3ecb665e8c6', '2019-05-20', '坏的要坚决反对，好的要热烈感谢。今日朋友圈揶揄的非银机构中，可能包商曾经在16:48救过你家账户的命。', '0', '已发布', '管理员', '932', '1');
 INSERT INTO `articles` VALUES ('8', '外交部谈谷歌暂停对华为部分业务：支持中企用法律捍卫权利', 'https://wpimg.wallstcn.com/5317a902-0930-4782-af15-f08c505f8a51.jpg', '2019-05-20', '“我们将正式确认此事，并进一步积极关注事态进展。同时，中方支持中国企业拿起法律武器捍卫自己的正当权利。”', '0', '已发布', '管理员', '356', '1');
 INSERT INTO `articles` VALUES ('9', '活久见！这家深圳公司被立案调查后暴力抗法，证监会稽查人员被抓伤！', 'https://wpimg.wallstcn.com/e9f25077-24ab-4286-9150-ba1e4c947539.png', '2019-05-20', '一位稽查人员表示，在其十余年的稽查生涯中，多次遇到过不配合执法的人员和公司，但还从未遇到过一家上市公司如此暴力反抗执法。', '0', '草稿', '管理员', '580', '2');
-INSERT INTO `articles` VALUES ('10', '监管风暴来袭！受正中珠江“牵连”，三家科创板受理企业已审核中止', 'https://wpimg.wallstcn.com/8986d499-0ee4-49a3-ad98-9ffda141ae83.jpg', '2019-05-20', '目前在主板IPO排队企业中，剔除审核状态为“中止审查”和“终止审查”，仍有19家公司审计机构为正中珠江。', '0', '草稿', '管理员', '251', '5');
+INSERT INTO `articles` VALUES ('10', '监管风暴来袭！受正中珠江“牵连”，三家科创板受理企业已审核中止', 'https://wpimg.wallstcn.com/8986d499-0ee4-49a3-ad98-9ffda141ae83.jpg', '2019-05-20', '目前在主板IPO排队企业中，剔除审核状态为“中止审查”和“终止审查”，仍有19家公司审计机构为正中珠江。', '0', '草稿', '管理员', '252', '5');
 INSERT INTO `articles` VALUES ('11', '科幻场景要成真了？亚马逊正开发可识别人类情绪的智能手环', 'https://wpimg.wallstcn.com/fd04752a-0dc9-4938-a88c-db50d71ef05a.jpg', '2019-05-20', '科技巨头们搜集的可不仅仅是你的上网记录。', '0', '草稿', '管理员', '194', '3');
-INSERT INTO `articles` VALUES ('12', '马来西亚网红泡泡茶计划明年上市，中国奶茶呢？', 'https://wpimg.wallstcn.com/585f14f2-a02b-45a9-a849-e0118afeb564.jpg', '2019-05-20', '奶茶品牌Tealive的母公司计划明年上市，估值最高达2.4亿美元。在中国，“领头羊”喜茶也传出融资新闻，估值高达80亿元。', '0', '已发布', '管理员', '970', '3');
+INSERT INTO `articles` VALUES ('12', '马来西亚网红泡泡茶计划明年上市，中国奶茶呢？', 'https://wpimg.wallstcn.com/585f14f2-a02b-45a9-a849-e0118afeb564.jpg', '2019-05-20', '奶茶品牌Tealive的母公司计划明年上市，估值最高达2.4亿美元。在中国，“领头羊”喜茶也传出融资新闻，估值高达80亿元。', '0', '已发布', '管理员', '971', '3');
 INSERT INTO `articles` VALUES ('13', '【视频】20年前葛优在《我爱我家》谈水变油，是不是似曾相识？', 'https://wpimg.wallstcn.com/ee29290c-0ab0-4a34-87c4-5e81369acec0.png', '2019-05-20', '何其相似~\n...', '0', '草稿', '管理员', '386', '4');
-INSERT INTO `articles` VALUES ('14', '三只松鼠上市求转机，连遭三拒后此次能否顺利通关？', 'https://wpimg.wallstcn.com/06d9fe5f-aeff-49c2-ac0d-9c216a5f39eb.jpg', '2019-05-20', '提交招股书已经过去两年，近日三只松鼠再次迎来上会。', '0', '已发布', '管理员', '992', '2');
+INSERT INTO `articles` VALUES ('14', '三只松鼠上市求转机，连遭三拒后此次能否顺利通关？', 'https://wpimg.wallstcn.com/06d9fe5f-aeff-49c2-ac0d-9c216a5f39eb.jpg', '2019-05-20', '提交招股书已经过去两年，近日三只松鼠再次迎来上会。', '0', '已发布', '管理员', '993', '2');
 INSERT INTO `articles` VALUES ('15', '三大指数全天缩量盘整 芯片股集体下挫 汽车板块尾盘飙升', 'https://wpimg.wallstcn.com/daed6700-daf1-4bc8-9098-432845ad9066.jpg', '2019-05-20', '两市小幅低开，开盘后指数迅速拉升，上证50涨逾1%，但随后大盘逐渐回落，芯片股今日集体补跌。但在银行板块的带动下，三大指数下探回升。午后指数小幅回暖，但科技股的杀跌仍旧拖累市场走势。临近尾盘，大盘持续回落。', '0', '草稿', '管理员', '454', '1');
 INSERT INTO `articles` VALUES ('16', '原油再现暴跌行情 去年的噩梦重新来了？', 'https://wpimg.wallstcn.com/296cacbb-86d9-443f-86a7-e77feb889fda.jpg', '2019-05-20', '原油市场已经好久没见过单日暴跌5%以上了。', '0', '已发布', '管理员', '358', '3');
 INSERT INTO `articles` VALUES ('17', '南阳“水氢发动机”刷屏，藏身背后的青年汽车是谁？', 'https://wpimg.wallstcn.com/1d8c2184-71b0-4f75-b566-ee6b93b5e2e4.jpg', '2019-05-20', '失信、老赖、骗补、噱头，这家公司的问题还真不少。', '0', '已发布', '管理员', '143', '1');
@@ -116,7 +116,7 @@ INSERT INTO `articles` VALUES ('44', '英镑暴跌，首相“被辞职”，英
 INSERT INTO `articles` VALUES ('45', '恐慌情绪缓和 美股高开低走全周累跌 油价转跌', 'https://wpimg.wallstcn.com/3e1387b5-96ac-4c3c-aafc-998f88f4e15a.jpg', '2019-05-22', '道指盘初最高涨180点，标普涨0.7%，纳指涨0.9%，开盘90分钟，标普率先转跌，科技、芯片与热门中概股均高开低走，主动申请纽交所退市的中芯国际跌超6%，京东和拼多多转跌超1%。本周，美股三大指数均累跌超1%。', '0', '草稿', '管理员', '531', '1');
 INSERT INTO `articles` VALUES ('46', '特朗普160亿美元农业补贴只是一厢情愿？', 'https://wpimg.wallstcn.com/1fa00060-0e38-42d3-a394-5f1242c49878.jpg', '2019-05-22', '“要市场不要补贴”！美国农民不想被当做棋子。', '0', '已发布', '管理员', '587', '1');
 INSERT INTO `articles` VALUES ('47', '【投票】IT业居首，金融业第二，房地产行业大幅落后......2018平均工资出炉，你达标了吗？', 'https://wpimg.wallstcn.com/9899f838-e3c8-46f4-bde4-11c765a7d366.jpg', '2019-05-22', '达标还是没达标？', '0', '已发布', '管理员', '449', '1');
-INSERT INTO `articles` VALUES ('48', '我国科学家创制非洲猪瘟候选疫苗，养猪板块午后急跌，兽用疫苗股拉升', 'https://wpimg.wallstcn.com/1d4ef24d-0fd2-4298-92f1-a0d30858e930.jpg', '2019-05-22', '午后，疫苗概念股午后快速拉升，养猪板块急速下跌。稍早，官方媒体称我国科学家创制了非洲猪瘟候选疫苗。', '0', '已发布', '管理员', '979', '5');
+INSERT INTO `articles` VALUES ('48', '我国科学家创制非洲猪瘟候选疫苗，养猪板块午后急跌，兽用疫苗股拉升', 'https://wpimg.wallstcn.com/1d4ef24d-0fd2-4298-92f1-a0d30858e930.jpg', '2019-05-22', '午后，疫苗概念股午后快速拉升，养猪板块急速下跌。稍早，官方媒体称我国科学家创制了非洲猪瘟候选疫苗。', '0', '已发布', '管理员', '981', '5');
 INSERT INTO `articles` VALUES ('49', '增融、抢车、高额违约：二手车贷乱象丛生', 'https://wpimg.wallstcn.com/150c6cee-bfd2-480a-9188-d2bcfa6a8b9c.jpg', '2019-05-22', '二手车和贷款复购率低，车商和车贷公司都不care口碑，一锤子买卖能赚一笔是一笔。', '0', '草稿', '管理员', '116', '1');
 INSERT INTO `articles` VALUES ('50', '汽车加水就能跑？官方回应来了：系记者用词不当', 'https://wpimg.wallstcn.com/5774cb51-b461-42e1-9c1e-5fe48472140f.jpg', '2019-05-22', '南阳市工信局回应，水氢发动机尚未认证验收。已要求涉事集团负责人写情况说明，”把技术的事儿说清楚、说明白。”', '0', '已发布', '管理员', '456', '3');
 INSERT INTO `articles` VALUES ('51', 'A股夜报 | 大盘走出独立行情，多路一线游资复苏', 'https://wpimg.wallstcn.com/6262f5e9-03cd-43dd-969d-1b752cfebc90.jpg', '2019-05-22', '隔夜美股暴跌，A股今日虽然下跌，但整体表现可以说相当给力了。', '0', '已发布', '管理员', '388', '1');
@@ -166,7 +166,7 @@ INSERT INTO `articles` VALUES ('94', '避险需求推升日元！日本人被迫
 INSERT INTO `articles` VALUES ('95', '中芯国际，晶圆市场的生力军', 'https://wpimg.wallstcn.com/18bb1a09-38a4-4847-900e-7848a80a8646.jpg', '2019-05-23', '虽然表面上看起来是一家很市场化的公司，但是中芯国际受到的政策扶持力度非常大。', '0', '已发布', '管理员', '814', '1');
 INSERT INTO `articles` VALUES ('96', 'A股上演真实版“Sell in May” 北上资金本月创多项卖出纪录', 'https://wpimg.wallstcn.com/466fb10d-7b86-4112-886c-2485a2d39197.jpg', '2019-05-24', '尽管距离5月结束还有一周的时间，但北上资金已经创下多项卖出纪录', '0', '草稿', '管理员', '600', '3');
 INSERT INTO `articles` VALUES ('97', '“我们承受不起新一轮加税”——美业界担心在美欧贸易争端中“躺枪”', 'https://wpimg.wallstcn.com/d133b6a3-9209-45a4-8313-925639240484.jpg', '2019-05-24', '来自航空、化学、农业、渔业、零售、服装等行业的30余位美国行业协会和企业代表出席了相关听证。美国服装鞋袜业联合会高级副会长称，行业及雇佣的400万美国工人再也承受不起新一轮加税。', '0', '已发布', '管理员', '107', '2');
-INSERT INTO `articles` VALUES ('98', '廉政公署将“名医”曹贵子告上法庭！港股“两康”故事比A股的还精彩', 'https://wpimg.wallstcn.com/0d11cdb2-935d-4fea-b38f-080b7b4bdaa3.jpg', '2019-05-24', '在A股的康得新和康美这“两康”吸引着投资者眼球之际，那些年港股的“两康”故事，也随着廉政公署将曹贵子告上法庭而让人深思。', '0', '草稿', '管理员', '74', '2');
+INSERT INTO `articles` VALUES ('98', '廉政公署将“名医”曹贵子告上法庭！港股“两康”故事比A股的还精彩', 'https://wpimg.wallstcn.com/0d11cdb2-935d-4fea-b38f-080b7b4bdaa3.jpg', '2019-05-24', '在A股的康得新和康美这“两康”吸引着投资者眼球之际，那些年港股的“两康”故事，也随着廉政公署将曹贵子告上法庭而让人深思。', '0', '草稿', '管理员', '75', '2');
 INSERT INTO `articles` VALUES ('99', '隔夜五张图：油市掀惊涛巨浪 美股战战兢兢 英美债市合唱大联欢 ', 'https://wpimg.wallstcn.com/0b55577b-6a70-4cdf-861b-20d7a296ae1a.jpg', '2019-05-24', '油市掀起“惊涛骇浪”：WTI一度跌超6%，布油一度跌超5%；英美债市携手大狂欢：10年期美债收益率一度跌近9个基点；关键美债收益率再度倒挂；科技股、能源股拖累美国股市 道指一度跌超400点；一周内央行官员两次喊话人民币汇率 ，离岸人民币周四涨近百点。', '0', '草稿', '管理员', '150', '1');
 INSERT INTO `articles` VALUES ('100', '【预告】如何通过投资实现人生逆袭？本周日，向陈志武在线提问', 'https://wpimg.wallstcn.com/24dfdc47-381b-486d-8864-fdb7798c911e.png', '2019-05-24', '在2019年是这一个关键的、转折的年份， 如何迅速搞懂金融逻辑，掌握财富道理，实现人生的逆袭呢？', '0', '草稿', '管理员', '905', '3');
 INSERT INTO `articles` VALUES ('101', '媒体：日本考虑禁止出口机器人及人工智能', 'https://wpimg.wallstcn.com/4d2d9eeb-3baf-4029-a14f-065d99f6519a.jpg', '2019-05-24', '相关法令可能在2020年颁布。', '0', '草稿', '管理员', '848', '4');
@@ -254,7 +254,7 @@ INSERT INTO `articles` VALUES ('182', '窘迫的德银：股价再创纪录新�
 INSERT INTO `articles` VALUES ('183', '央媒头版：长三角将打造“一极三区一高地” 谋划一批顶天立地的重大项目和工程', 'https://wpimg.wallstcn.com/e748b347-ec6a-4932-b3ec-2e9c7cd2987c.jpg', '2019-05-27', '三省一市正抓紧编制产业地图，探索成本共担和利益共享机制。未来长三角将建设成为全国发展强劲的活跃增长极，高质量发展样板区、率先基本实现现代化引领区、区域一体化发展示范区和新时代改革开放新高地。', '0', '已发布', '管理员', '366', '2');
 INSERT INTO `articles` VALUES ('184', '新华社：抓住数字机遇 打造经济新高地——从数字经济看发展新动能', 'https://wpimg.wallstcn.com/356c8ed4-414b-4a4d-a0e9-04125f2c6ece.jpg', '2019-05-27', '工信部总经济师称，一方面，将构建大中小企业融通的开放创新平台，加快数字经济核心技术研发突破和产学研相结合；另一方面，将推动数字经济领域的全球交流合作，以更加开放的姿态融入全球数字经济发展。', '0', '已发布', '管理员', '268', '4');
 INSERT INTO `articles` VALUES ('185', '中小银行的困惑和出路', 'https://wpimg.wallstcn.com/673585c0-ec88-4371-b4c9-ce2087a4d7d9.jpg', '2019-05-27', '理财子公司对很多中小银行而言，仍是空中楼阁，并不是那么现实。', '0', '已发布', '管理员', '33', '1');
-INSERT INTO `articles` VALUES ('186', '张士平和他的魏桥“帝国”', 'https://wpimg.wallstcn.com/49ad0630-00ce-4d34-8553-be0416f482dc.jpg', '2019-05-27', '如果说任正非将华为顺势带到了全球通信产业的强者之列，堪称伟大。那么在纺织和铝业两个“日暮西山”的行业里，逆势把魏桥推向世界之巅的张士平，也应被赞赏。', '0', '已发布', '管理员', '980', '5');
+INSERT INTO `articles` VALUES ('186', '张士平和他的魏桥“帝国”', 'https://wpimg.wallstcn.com/49ad0630-00ce-4d34-8553-be0416f482dc.jpg', '2019-05-27', '如果说任正非将华为顺势带到了全球通信产业的强者之列，堪称伟大。那么在纺织和铝业两个“日暮西山”的行业里，逆势把魏桥推向世界之巅的张士平，也应被赞赏。', '0', '已发布', '管理员', '981', '5');
 INSERT INTO `articles` VALUES ('187', 'Uber上市即暴跌 承销商摩根士丹利成了“追责”对象', 'https://wpimg.wallstcn.com/98cebcfe-9ab3-46ab-b80a-db8d5f4f8d06.jpg', '2019-05-27', 'Uber千亿美元市值梦碎后，大摩也成为“千夫所指”。', '0', '草稿', '管理员', '336', '2');
 INSERT INTO `articles` VALUES ('188', '30多年前，日本是如何输掉芯片战争的？', 'https://wpimg.wallstcn.com/6d06e7b8-ba42-4424-b351-0ee984afaa5d.jpg', '2019-05-27', '纵观日美芯片战，是否掌握重组全球产业链的能力才是决胜关键。', '0', '草稿', '管理员', '757', '1');
 INSERT INTO `articles` VALUES ('189', '诺奖得主：不确定性“遍地开花”，全球经济还好吗？', 'https://wpimg.wallstcn.com/aefa23b1-760f-45d1-ad5c-f9f1a723bd72.jpg', '2019-05-27', '考虑到当前市场被巨大的不确定性所笼罩，全球经济增长放缓的现象不容小觑。', '0', '草稿', '管理员', '891', '1');
@@ -288,15 +288,19 @@ INSERT INTO `articles` VALUES ('216', '道指重挫400点 能源和芯片股大�
 INSERT INTO `articles` VALUES ('217', '担心“黑天鹅”事件 超级富豪们三年来首次“增持”现金', 'https://wpimg.wallstcn.com/fe80ac4c-77c4-4847-950d-26605c4ec724.jpg', '2019-05-28', '富人投资组织Tiger 21的750名成员今年一季度的现金持有量增加了20%，升至2013年初以来最高水平。', '0', '草稿', '管理员', '424', '2');
 INSERT INTO `articles` VALUES ('218', '一文读懂：出海“吃肉”的中国互联网券商，凭什么成为行业“破局者”？', 'https://wpimg.wallstcn.com/5cc59d02-b2db-471a-a3bd-fe9a69547610.jpg', '2019-05-28', '其实，线上券商行业还在等待第一个“吃螃蟹的人”。', '0', '已发布', '管理员', '863', '1');
 INSERT INTO `articles` VALUES ('219', '上交所：科创板首轮问询回复存在五方面问题', 'https://wpimg.wallstcn.com/179f5463-8273-4e09-9bfb-a25dd6a6cd4a.jpg', '2019-05-28', '问题包括：避重就轻、答非所问；刻意避短、夸大其词等。', '0', '草稿', '管理员', '223', '4');
-INSERT INTO `articles` VALUES ('220', '借美团点评发布最佳财报之际，我们讨论一下估值分歧 | 见智研究团队', 'https://wpimg.wallstcn.com/9778718c-e680-4cef-88ad-9b62f21043a8.jpg', '2019-05-28', '见智对美团点评的“分部估值法”持有保留意见，两种估值方法得到截然相反的估值结果，本质上是对外卖业务的价值评估分歧。', '0', '已发布', '管理员', '667', '1');
+INSERT INTO `articles` VALUES ('220', '借美团点评发布最佳财报之际，我们讨论一下估值分歧 | 见智研究团队', 'https://wpimg.wallstcn.com/9778718c-e680-4cef-88ad-9b62f21043a8.jpg', '2019-05-28', '见智对美团点评的“分部估值法”持有保留意见，两种估值方法得到截然相反的估值结果，本质上是对外卖业务的价值评估分歧。', '0', '已发布', '管理员', '668', '1');
 INSERT INTO `articles` VALUES ('221', '大萨达撒', '88282ac4628c8bc827492ab7babc8d6d', '2019-08-28', '<p>法萨芬三</p>', '1', '已发布', '管理员', '0', '1');
 INSERT INTO `articles` VALUES ('222', 'AAA', 'c3c2389ca1074c40cf9e3b33a36e0641', '2019-08-28', '<p>ASDSADSADSADSA</p>', '1', '草稿', '管理员', '2', '4');
-INSERT INTO `articles` VALUES ('223', '奋达科技发', '4c1cfc6d7eea7c67381503daa9802876', '2019-08-28', '<p>fdsfdsf</p>', '0', '已发布', '管理员', '1', '1');
+INSERT INTO `articles` VALUES ('223', '奋达科技发', '4c1cfc6d7eea7c67381503daa9802876', '2019-08-28', '<p>fdsfdsf</p>', '1', '已发布', '管理员', '1', '1');
+INSERT INTO `articles` VALUES ('224', '奋达科技发aaa', '4e7ecfd0b0bfd1ee13cc4ba4756e6f87', '2019-08-28', '<pre class=\"language-markup\"><code>&lt;!DOCTYPE html&gt;\n&lt;html lang=\"en\"&gt;\n\n&lt;head&gt;\n    &lt;meta charset=\"UTF-8\"&gt;\n    &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\n    &lt;meta http-equiv=\"X-UA-Compatible\" conte', '1', '已发布', '管理员', '1', '5');
+INSERT INTO `articles` VALUES ('225', '阿大撒大撒', '27f7ba260a7cb31fa76abec5e73cb6fa', '2019-05-17', '<pre class=\"language-markup\"><code>&lt;!DOCTYPE html&gt;\n&lt;html lang=\"en\"&gt;\n\n&lt;head&gt;\n    &lt;meta charset=\"UTF-8\"&gt;\n    &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\n    &lt;meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\"&gt;\n    &lt;title&gt;大事件-后台首页&lt;/title&gt;\n    &lt;link rel=\"stylesheet\" href=\"js/bootstrap/css/bootstrap.min.css\"&gt;\n    &lt;link rel=\"stylesheet\" href=\"css/reset.css\"&gt;\n    &lt;link rel=\"stylesheet\" href=\"css/iconfont.css\"&gt;\n    &lt;link rel=\"stylesheet\" href=\"css/main.css\"&gt;\n    &lt;script src=\"js/jquery-1.12.4.min.js\"&gt;&lt;/script&gt;\n&lt;/head&gt;\n\n&lt;body&gt;\n    &lt;div class=\"sider\"&gt;\n        &lt;a href=\"index.html\" class=\"logo\"&gt;&lt;img src=\"images/logo02.png\" alt=\"logo\"&gt;&lt;/a&gt;\n        &lt;div class=\"user_info\"&gt;\n            &lt;img src=\"#\" alt=\"person\" class=\"userPic\"&gt;\n            &lt;span class=\"nickname\"&gt;&lt;/span&gt;\n            &lt;b&gt;管理员&lt;/b&gt;\n        &lt;/div&gt;\n        &lt;div class=\"menu\"&gt;\n            &lt;div class=\"level01 active\"&gt;&lt;a href=\"main_count.html\" target=\"main_frame\"&gt;&lt;i\n                        class=\"iconfont icon-yidiandiantubiao04\"&gt;&lt;/i&gt;&lt;span&gt;首页&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;\n            &lt;div class=\"level01\"&gt;&lt;a href=\"#\"&gt;&lt;i class=\"iconfont icon-icon-article\"&gt;&lt;/i&gt;&lt;span&gt;文章管理&lt;/span&gt;&lt;b\n                        class=\"iconfont icon-arrowdownl\"&gt;&lt;/b&gt;&lt;/a&gt;&lt;/div&gt;\n            &lt;ul class=\"level02\"&gt;\n                &lt;li&gt;&lt;a href=\"article_list.html\" target=\"main_frame\"&gt;&lt;i\n                            class=\"iconfont icon-previewright\"&gt;&lt;/i&gt;&lt;span&gt;文章列表&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;\n                &lt;li&gt;&lt;a href=\"article_release.html\" target=\"main_frame\"&gt;&lt;i\n                            class=\"iconfont icon-previewright\"&gt;&lt;/i&gt;&lt;span&gt;发表文章&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;\n                &lt;li&gt;&lt;a href=\"article_category.html\" target=\"main_frame\"&gt;&lt;i\n                            class=\"iconfont icon-previewright\"&gt;&lt;/i&gt;&lt;span&gt;文章类别管理&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;\n            &lt;/ul&gt;\n            &lt;div class=\"level01\"&gt;&lt;a href=\"comment_list.html\" target=\"main_frame\"&gt;&lt;i\n                        class=\"iconfont icon-comment\"&gt;&lt;/i&gt;&lt;span&gt;评论管理&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;\n            &lt;div class=\"level01\"&gt;&lt;a href=\"user.html\" target=\"main_frame\"&gt;&lt;i\n                        class=\"iconfont icon-user\"&gt;&lt;/i&gt;&lt;span&gt;个人中心&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;\n        &lt;/div&gt;\n    &lt;/div&gt;\n    &lt;div class=\"header_bar\"&gt;\n        &lt;form class=\"search_form\"&gt;\n            &lt;input type=\"text\" placeholder=\"请输入搜索内容\"&gt;\n            &lt;i class=\"iconfont icon-search\"&gt;&lt;/i&gt;\n        &lt;/form&gt;\n        &lt;div class=\"user_center_link\"&gt;\n            &lt;a href=\"user.html\" onclick=\"setMenu(3,0)\" target=\"main_frame\"&gt;个人中心&lt;/a&gt;\n            &lt;img src=\"#\" alt=\"person\" class=\"userPic\"&gt;\n            &lt;a href=\"javascript:exit();\"&gt;&lt;i class=\"iconfont icon-tuichu\"&gt;&lt;/i&gt; 退出&lt;/a&gt;\n        &lt;/div&gt;\n    &lt;/div&gt;\n    &lt;div class=\"main\" id=\"main_body\"&gt;\n        &lt;iframe src=\"main_count.html\" frameborder=\"0\" id=\"main_frame\" name=\"main_frame\" frameborder=\"0\"\n            scrolling=\"auto\"&gt;&lt;/iframe&gt;\n    &lt;/div&gt;\n\n    &lt;script&gt;\n        var $level01 = $(\'.level01\');\n        var $subli = $(\'.level02 li\')\n        $level01.click(function () {\n            $level01.not($(this)).removeClass(\'active\');\n            $(this).addClass(\'active\');\n            if ($(this).next().hasClass(\'level02\')) {\n                $(this).next().slideToggle();\n                $(this).find(\'b\').toggleClass(\'rotate0\');\n            } else {\n                $subli.removeClass(\'active\');\n            }\n        })\n\n        $subli.click(function () {\n            $subli.not($(this)).removeClass(\'active\');\n            $(this).addClass(\'active\');\n\n            if (!$(this).parent().prev().hasClass(\'active\')) {\n                $level01.removeClass(\'active\');\n                $(this).parent().prev().addClass(\'active\');\n            }\n        })\n\n        function resizeFrame() {\n            var frame_w = $(\'#main_body\').outerWidth();\n            var frame_h = $(\'#main_body\').outerHeight();\n            $(\'#main_frame\').css({ \'width\': frame_w, \'height\': frame_h });\n        }\n\n        resizeFrame();\n\n        $(window).resize(function () {\n            resizeFrame();\n        })\n\n        function setMenu(m, n) {\n            $level01.eq(m).addClass(\'active\').siblings().not(\'.level02\').removeClass(\'active\');\n            if (m != 1) {\n                $(\'.level02\').slideUp();\n            } else {\n                $(\'.level02\').slideDown();\n                $(\'.level02\').children().eq(n).addClass(\'active\').siblings().removeClass(\'active\');\n            }\n        }\n    &lt;/script&gt;\n&lt;/body&gt;\n\n&lt;script&gt;\n    var baseUrl = \"http://localhost:8080\";\n&lt;/script&gt;\n&lt;!-- 退出登录 --&gt;\n&lt;script&gt;\n    function exit() {\n        var a = confirm(\"您确定是否退出该用户？\");\n        if (!a) {\n            return;\n        }\n        location.href = \"./login.html\";\n    }\n&lt;/script&gt;\n&lt;!-- 获取用户信息 --&gt;\n&lt;script&gt;\n    $.get(baseUrl + \"/admin/user/info\", function (res) {\n        $(\".userPic\").attr(\"src\", res.data.userPic);\n        $(\".nickname\").html(\"欢迎&amp;nbsp;&amp;nbsp;\" + res.data.nickname);\n    }, \"json\");\n&lt;/script&gt;\n\n&lt;!-- 搜索事件 --&gt;\n&lt;script&gt;\n    $(\".icon-search\").click(function (e) {\n        var a = $(\".search_form input\").val();\n        //实现target跳转\n        window.parent.main_frame.location.href = \"./article_list.html\";\n    });\n&lt;/script&gt;\n\n&lt;/html&gt;</code></pre>', '1', '已发布', '管理员', '1', '3');
+INSERT INTO `articles` VALUES ('226', 'bbb', 'b0f0e1d3e2ca5f867d5c488d1f113d16', '2019-08-28', '<p>aaa</p>', '0', '已发布', '管理员', '5', '2');
 INSERT INTO `categories` VALUES ('1', '爱生活', '热爱生活');
 INSERT INTO `categories` VALUES ('2', '爱旅行', '热爱旅');
 INSERT INTO `categories` VALUES ('3', '爱美食', '热爱美食');
 INSERT INTO `categories` VALUES ('4', '爱运动', '热爱运动');
 INSERT INTO `categories` VALUES ('5', '经济特区', '热爱经济');
+INSERT INTO `categories` VALUES ('22', '体育', 'sports');
 INSERT INTO `comments` VALUES ('1', '龙娜', '物条九接装设种则此再包个引持。', '2019-4-18', '00:27:17', '已通过', '148');
 INSERT INTO `comments` VALUES ('2', '邱静', '近条许我老置门军我事家无他养天新热则千内快问区元山。', '2019-2-13', '02:33:46', '已通过', '200');
 INSERT INTO `comments` VALUES ('3', '刘杰', '其验东于需容领间却说据数选两律门线度求类以决内天没。', '2019-4-30', '05:39:55', '已通过', '52');
@@ -8286,9 +8290,9 @@ INSERT INTO `comments` VALUES ('7986', '江涛', '该思面转管难斗合然明
 INSERT INTO `comments` VALUES ('7987', '高勇', '质然求都理题石价作林经一斗队一院原办不却战上六你。', '2019-3-18', '13:48:40', '已通过', '61');
 INSERT INTO `comments` VALUES ('7988', '钱敏', '导过九再毛除育多难空劳然带备议间族知之易治变总风海往进新号阶只员。', '2019-4-04', '11:47:47', '已通过', '197');
 INSERT INTO `comments` VALUES ('7989', '徐刚', '北通广重方后京把社信矿色须低和信队干学日何引记件极状行斗状。', '2019-6-19', '01:15:30', '已通过', '181');
-INSERT INTO `comments` VALUES ('7990', '李强', '研构得广从多提六头光五其当今思况要识。', '2019-3-09', '18:09:42', '已通过', '116');
-INSERT INTO `comments` VALUES ('7991', '陈秀英', '步路去列万体合热作。', '2019-2-28', '18:47:53', '已通过', '108');
-INSERT INTO `comments` VALUES ('7992', '吕艳', '米算断清己又传红关约管特温特往按家该资根般易。', '2019-4-30', '11:00:25', '已通过', '74');
+INSERT INTO `comments` VALUES ('7990', '李强', '研构得广从多提六头光五其当今思况要识。', '2019-3-09', '18:09:42', '已拒绝', '116');
+INSERT INTO `comments` VALUES ('8007', 'aaaaa', 'aaa', '2019-08-30', '01:36:25', '已通过', '226');
+INSERT INTO `comments` VALUES ('7992', '吕艳', '米算断清己又传红关约管特温特往按家该资根般易。', '2019-4-30', '11:00:25', '已拒绝', '74');
 INSERT INTO `comments` VALUES ('7993', '夏磊', '质安科角基变次因务果这感候育济接劳规。', '2019-3-18', '01:44:18', '已通过', '181');
 INSERT INTO `comments` VALUES ('7994', '罗军', '已权民领商从海大候北水省识国社温张满土根术严必接速很层。', '2019-1-10', '22:11:36', '已通过', '159');
 INSERT INTO `comments` VALUES ('7995', '程勇', '龙效业往今区导算往导较书发使四头速。', '2019-6-14', '03:14:15', '已通过', '27');
@@ -8296,11 +8300,8 @@ INSERT INTO `comments` VALUES ('7996', '谢丽', '三放存头经省素江历命
 INSERT INTO `comments` VALUES ('7997', '孙伟', '位合八品深场断活同发只品治并积包问联展计从展较。', '2019-6-06', '17:48:39', '已通过', '37');
 INSERT INTO `comments` VALUES ('7998', '陈刚', '组按走查小加业白大资始现布细图委种还非带极号时往看百头。', '2019-5-12', '19:52:03', '已通过', '46');
 INSERT INTO `comments` VALUES ('7999', '周超', '起周件就每万主比通老革包持题前认例厂须人内来开比六术次。', '2019-3-17', '05:15:38', '已通过', '5');
-INSERT INTO `comments` VALUES ('8000', '贾平', '日将易经示于发目基使建位究结利证开京商计天。', '2019-3-21', '06:26:02', '已通过', '94');
+INSERT INTO `comments` VALUES ('8000', '贾平', '日将易经示于发目基使建位究结利证开京商计天。', '2019-3-21', '06:26:02', '已拒绝', '94');
 INSERT INTO `comments` VALUES ('8001', 'aaaccc', 'aaaccc', '2019-08-26', '19:56:42', '已通过', '185');
-INSERT INTO `comments` VALUES ('8002', 'keyp', '我半年后给你们概念股烦恼\n', '2019-08-26', '20:34:43', '已通过', '95');
-INSERT INTO `comments` VALUES ('8003', 's76666', '666', '2019-08-26', '20:39:18', '已通过', '95');
-INSERT INTO `comments` VALUES ('8004', 's76666', '666', '2019-08-26', '20:39:49', '已通过', '95');
-INSERT INTO `comments` VALUES ('8005', 'Y55555', '15235', '2019-08-26', '20:39:59', '已通过', '95');
-INSERT INTO `comments` VALUES ('8006', 'R12313', '123213', '2019-08-26', '20:41:47', '已通过', '95');
-INSERT INTO `users` VALUES ('1', 'admin', '李思思', 'sisili@qq.com', 'icon.jpg', '123456');
+INSERT INTO `comments` VALUES ('8004', 's76666', '666', '2019-08-26', '20:39:49', '已拒绝', '95');
+INSERT INTO `comments` VALUES ('8009', '公正啊', '公开', '2019-08-30', '01:41:46', '已通过', '48');
+INSERT INTO `users` VALUES ('1', 'admin', '李思思', 'lisisi1@qq.com', 'icon.jpg', '123456');
